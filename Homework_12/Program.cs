@@ -10,7 +10,7 @@
             while (true)
             {
                 var key = Console.ReadLine();
-                switch (key.ToString())
+                switch (key)
                 {
                     case "A" or "a":
                         var item = new Item(shop.product.Count, $"Товар от {DateTime.Now}");
@@ -22,8 +22,7 @@
                         shop.Remove(Convert.ToInt32(id));
                         break;
                     case "X" or "x":
-                        Environment.Exit(0);
-                        break;
+                        return;
                 }
             }
         }

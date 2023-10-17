@@ -9,22 +9,21 @@ namespace Librarian
         {
             _books = books;
         }
-        public void AddBook(string nameBook)
+        public void AddBook(string? nameBook)
         {
-            if (nameBook != null)
+            if (nameBook == null)
+                return;
+            if (_books.ContainsKey(nameBook))
             {
-                if (_books.ContainsKey(nameBook))
-                {
-                    Console.WriteLine("Такая книга существует! Добавьте другую");
-                }
-                else
-                {
-                    _books.TryAdd(nameBook, 0);
-                }
+                Console.WriteLine("Такая книга существует! Добавьте другую");
+            }
+            else
+            {
+                _books.TryAdd(nameBook, 0);
             }
         }
 
-        public void ShowBook()
+        public void ShowBooks()
         {
             foreach (var book in _books)
             {

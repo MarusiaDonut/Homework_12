@@ -19,20 +19,23 @@ namespace Libraian
                 {
                     Console.WriteLine("1 - добавить книгу; \n2 - вывести список непрочитанного; \n3 - выйти");
                     var number = Console.ReadLine();
-                    int numberParse = int.Parse(number);
-                    switch (numberParse)
+                    if (int.TryParse(number, out int numberP)) 
                     {
-                        case 1:
-                            Console.WriteLine("Введите название книги:");
-                            var nameBook = Console.ReadLine();
-                            bookMethod.AddBook(nameBook);
-                            break;
-                        case 2:
-                            bookMethod.ShowBook();
-                            break;
-                        case 3:
-                            Environment.Exit(0);
-                            break;
+                        int numberParse = int.Parse(number);
+                        switch (numberParse)
+                        {
+                            case 1:
+                                Console.WriteLine("Введите название книги:");
+                                var nameBook = Console.ReadLine();
+                                bookMethod.AddBook(nameBook);
+                                break;
+                            case 2:
+                                bookMethod.ShowBooks();
+                                break;
+                            case 3:
+                                Environment.Exit(0);
+                                break;
+                        }
                     }
                 }
             }
